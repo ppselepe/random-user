@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
+import * as moment from 'moment';
 
 import { UserService } from '../../services/user.service';
 import { User } from '../../models/user';
+
 
  @Component({
   selector: 'app-user',
@@ -49,7 +51,8 @@ export class UserComponent implements OnInit {
        }
        case "birthday": {
          this.eventDesscription = "My birthday is";
-         this.eventDetail = this.user.getBirthDay();
+         this.eventDetail = moment(this.user.getBirthDay()).format('DD/MM/YYYY');
+
           break;
        }
        case "address": {
